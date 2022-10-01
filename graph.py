@@ -1,22 +1,26 @@
+from main import *
 import matplotlib.pyplot as plt
-'''
-x = [0]
-y1 = [0]
-y2 = [0]
 
-plt.bar(x, y1, color = 'b')
-plt.bar(x, y2, color = 'y')
+
+
+product = list(remaining.index)
+print(product)
+quantity = list(remaining.values)
+print(quantity)
+
+# Single month food waste
+fig = plt.figure(figsize = (10, 5))
+plt.bar(product, quantity, color = 'blue', width = 0.2)
+plt.show()
+
+
+# Multiple month food waste
+monthRemainingData = {}
+for month in data:
+   monthRemainingData[month] = list(data.values)
+
+'''
+plt.bar(x, y1, color=(random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1)))
+plt.bar(x, y1+y2, ccolor=(random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1)))
 plt.show
 '''
-
-def productDictionary():
-
-    return 0
-
-
-product = list(productDictionary.keys())
-quantity = list(productDictionary.values())
-
-# fig = plt.figure(figsize = (10, 5))
-
-# plt.bar(product, quantity, color = 'blue', width = 0.2)
