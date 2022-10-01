@@ -2,16 +2,16 @@ import csv
 from numpy import product
 import pandas as pd
 
-
-
-product = pd.read_csv('dummyProduct.csv',index_col=0)
-recipe = pd.read_csv('dummyRecipe.csv',index_col=0).transpose()
-sold = pd.read_csv('dummySold.csv',index_col=0).transpose()
-rec=list(recipe.columns)
-used=pd.DataFrame()
-for i in rec:
-    prod=sold[i]
-    used[i]=recipe[i]*prod[0]
-used["sum"] = used.sum(axis=1)
-remaining=product["Count"]-used["sum"]
-print(remaining)
+def calculating(inventory,recipe,sold):
+    inventoryDF = pd.read_csv(inventory,index_col=0)
+    recipeDF = pd.read_csv(recipe,index_col=0).transpose()
+    soldDF = pd.read_csv(sold,index_col=0).transpose()
+    rec=list(recipeDF.columns)
+    used=pd.DataFrame()
+    for i in rec:
+        prod=soldDF[i]
+        used[i]=recipeDF[i]*prod[0]
+    used["sum"] = used.sum(axis=1)
+    remaining=inventoryDF["Count"]-used["sum"]
+    return remaining
+print(calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv"))
