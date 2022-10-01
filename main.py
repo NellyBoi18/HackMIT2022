@@ -14,7 +14,7 @@ used=pd.DataFrame()
 for i in rec:
     prod=sold[i]
     used[i]=recipe[i]*prod[0]
-
+used["sum"] = used.sum(axis=1)
 print(used)
 
 
