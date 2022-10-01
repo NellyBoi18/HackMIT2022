@@ -1,5 +1,6 @@
 import csv
+from numpy import product
 import pandas as pd
 
-df = pd.read_csv('data.csv')
-print(df.to_string())
+product = pd.read_csv('dummyProduct.csv')
+print(product.to_string())
