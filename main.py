@@ -1,6 +1,6 @@
-import csv
 from numpy import product
 import pandas as pd
+from sympy import re
 
 def calculating(inventory,recipe,sold):
     inventoryDF = pd.read_csv(inventory,index_col=0)
@@ -12,6 +12,10 @@ def calculating(inventory,recipe,sold):
         prod=soldDF[i]
         used[i]=recipeDF[i]*prod[0]
     used["sum"] = used.sum(axis=1)
-    remaining=inventoryDF["Count"]-used["sum"]
+    remaining=pd.DataFrame()
+    remaining["Food_Waste"]=inventoryDF["Count"]-used["sum"]
+    remaining["Cost_of_Waste"]=remaining["Food_Waste"]*inventoryDF["Unit Price"]
     return remaining
+
 print(calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv"))
+
