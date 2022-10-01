@@ -14,3 +14,4 @@ for i in rec:
     used[i]=recipe[i]*prod[0]
 used["sum"] = used.sum(axis=1)
 remaining=product["Count"]-used["sum"]
+print(remaining)
