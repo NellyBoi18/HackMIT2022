@@ -2,6 +2,7 @@ from numpy import product
 import numpy as np
 import pandas as pd
 from sympy import re
+import matplotlib.pyplot as plt
 
 def calculating(inventory,recipe,sold):
     inventoryDF = pd.read_csv(inventory,index_col=0)
@@ -18,6 +19,29 @@ def calculating(inventory,recipe,sold):
     remaining["Cost_of_Waste"]=remaining["Food_Waste"]*inventoryDF["Unit Price"]
     return remaining
 
+# Takes in a DataFrame object containing month and food waste per month
+def linReg(df):
+
+    # Lin reg for every ingredient
+    for columns in df.shape[1] - 1: # Iterating ingredients minus month column
+        # Declaring x axis (months)
+        x = []
+        for rows in df.shape[0]:
+            x.append(rows)
+
+        # Y axis (waste)
+        y = []
+        for count in columns():
+            y.append(df["Waste"]) # TODO Needs to only get a certain column (ie. 'buns' or 'beef')
+
+        coef = np.polyfit(x,y,1)
+        poly1d_fn = np.poly1d(coef) # Function that takes in x and returns an extimate for y
+
+        # Plotting
+        plt.plot(x, y, 'yo', poly1d_fn(x), '--k') # 'yo' = yellow circle marker, '--k' = black dashed line
+
+    pass # TEMP. Remove when done
+
 remaining = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
 
 Jan = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
@@ -29,3 +53,10 @@ monthRemaining = monthRemaining.rename_axis("Month", axis="columns")
 monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
 #monthRemaining.insert(0, 'index', [*range(len(monthRemaining))])
 print(monthRemaining)
+
+# Testing linReg()
+linRegXYData = pd.DataFrame()
+linRegXYData["Month"] = ([1], [2], [3])
+linRegXYData["Waste"] = ([Jan["Food_Waste"]], [Feb["Food_Waste"]], [Mar["Food_Waste"]])
+# linReg(linRegXYData)
+print(linRegXYData)
