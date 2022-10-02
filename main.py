@@ -20,9 +20,9 @@ def calculating(inventory,recipe,sold):
 print(calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv"))
 
 Jan = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
-Feb = calculating("dummyProduct.csv","dummyRecipe2.csv","dummySold2.csv")
-Mar = calculating("dummyProduct.csv","dummyRecipe3.csv","dummySold3.csv")
+Feb = calculating("dummyProduct2.csv","dummyRecipe.csv","dummySold2.csv")
+Mar = calculating("dummyProduct3.csv","dummyRecipe.csv","dummySold3.csv")
 
-monthRemaining =  (
-    
-)
+
+monthRemaining = pd.concat([Jan.T[0:1], Feb.T[0:1], Mar.T[0:1]])
+monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
