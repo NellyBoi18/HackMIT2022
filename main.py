@@ -26,3 +26,4 @@ Mar = calculating("dummyProduct3.csv","dummyRecipe.csv","dummySold3.csv")
 
 monthRemaining = pd.concat([Jan.T[0:1], Feb.T[0:1], Mar.T[0:1]])
 monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
+monthRemaining = monthRemaining.rename_axis("Month", axis="columns")
