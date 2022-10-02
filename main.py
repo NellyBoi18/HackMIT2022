@@ -32,7 +32,7 @@ def linReg(df):
         # Y axis (waste)
         y = []
         for count in columns():
-            y.append(df["Waste"]) # TODO Needs to only get a certain column (ie. 'buns' or 'beef')
+            y.append(df.at[count, "Waste"]) # Appeds each month's waste to y
 
         coef = np.polyfit(x,y,1)
         poly1d_fn = np.poly1d(coef) # Function that takes in x and returns an extimate for y
@@ -58,5 +58,5 @@ print(monthRemaining)
 linRegXYData = pd.DataFrame()
 linRegXYData["Month"] = ([1], [2], [3])
 linRegXYData["Waste"] = ([Jan["Food_Waste"]], [Feb["Food_Waste"]], [Mar["Food_Waste"]])
-# linReg(linRegXYData)
-print(linRegXYData)
+linReg(linRegXYData)
+print("\n", linRegXYData)
