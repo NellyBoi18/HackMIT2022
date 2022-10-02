@@ -19,3 +19,10 @@ def calculating(inventory,recipe,sold):
 
 print(calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv"))
 
+Jan = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
+Feb = calculating("dummyProduct.csv","dummyRecipe2.csv","dummySold2.csv")
+Mar = calculating("dummyProduct.csv","dummyRecipe3.csv","dummySold3.csv")
+
+monthRemaining =  (
+    
+)

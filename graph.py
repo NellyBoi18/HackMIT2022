@@ -15,12 +15,5 @@ plt.show()
 
 
 # Multiple month food waste
-monthRemainingData = {}
-for month in data:
-   monthRemainingData[month] = list(data.values)
-
-'''
-plt.bar(x, y1, color=(random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1)))
-plt.bar(x, y1+y2, ccolor=(random.uniform(0, 1), random.uniform(0, 1), random.uniform(0, 1)))
-plt.show
-'''
+df  =
+columns = []
