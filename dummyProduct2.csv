@@ -1,12 +1,12 @@
-Product,Count
-bun,60
-beef,70
-sliced cheese,90
-mozzerella,60
-lettuce,50
-tomato,45
-pasta,43
-marinara,50
-ranch,40
-potato,30
-dough,50
+Product,Count,Unit Price
+bun,60,1
+beef,70,5
+sliced cheese,90,0.5
+mozzerella,60,0.75
+lettuce,50,0.1
+tomato,45,0.15
+pasta,43,1.5
+marinara,50,3
+ranch,40,2.5
+potato,30,0.9
+dough,50,0.25
