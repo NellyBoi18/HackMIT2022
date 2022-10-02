@@ -1,4 +1,5 @@
 from numpy import product
+import numpy as np
 import pandas as pd
 from sympy import re
 
@@ -23,7 +24,7 @@ Jan = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
 Feb = calculating("dummyProduct2.csv","dummyRecipe.csv","dummySold2.csv")
 Mar = calculating("dummyProduct3.csv","dummyRecipe.csv","dummySold3.csv")
 
-
 monthRemaining = pd.concat([Jan.T[0:1], Feb.T[0:1], Mar.T[0:1]])
-monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
 monthRemaining = monthRemaining.rename_axis("Month", axis="columns")
+monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
+monthRemaining = monthRemaining.insert(loc=0, column='row_num', value=np.arange(len(monthRemaining)))
