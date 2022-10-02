@@ -17,7 +17,7 @@ def calculating(inventory,recipe,sold):
     remaining["Cost_of_Waste"]=remaining["Food_Waste"]*inventoryDF["Unit Price"]
     return remaining
 
-print(calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv"))
+remaining = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
 
 Jan = calculating("dummyProduct.csv","dummyRecipe.csv","dummySold.csv")
 Feb = calculating("dummyProduct2.csv","dummyRecipe.csv","dummySold2.csv")
