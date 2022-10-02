@@ -23,22 +23,30 @@ def calculating(inventory,recipe,sold):
 def linReg(df):
 
     # Lin reg for every ingredient
-    for columns in df.shape[1] - 1: # Iterating ingredients minus month column
-        # Declaring x axis (months)
-        x = []
-        for rows in df.shape[0]:
-            x.append(rows)
+    columns = df.columns
+    # Declaring x axis (months)
+    x = [1, 2, 3] # Months
 
-        # Y axis (waste)
-        y = []
-        for count in columns():
-            y.append(df.at[count, "Waste"]) # Appeds each month's waste to y
+    print(x)
 
-        coef = np.polyfit(x,y,1)
-        poly1d_fn = np.poly1d(coef) # Function that takes in x and returns an extimate for y
+    # Y axis (waste)
+    # yDF = pd.MultiIndex.from_frame(df["Waste"]) # Getting data from dataFrame inside dataFrame df
+    # print(yDF)
 
-        # Plotting
-        plt.plot(x, y, 'yo', poly1d_fn(x), '--k') # 'yo' = yellow circle marker, '--k' = black dashed line
+    bunWaste = []
+    bunWaste.append(df["Jan"]["bun"])
+    bunWaste.append(df["Feb"]["bun"])
+    bunWaste.append(df["Mar"]["bun"])
+    print(bunWaste)
+
+    coef = np.polyfit(x,bunWaste,1)
+    poly1d_fn = np.poly1d(coef) # Function that takes in x and returns an extimate for y
+
+    # Plotting
+    plt.plot(x, bunWaste, 'yo', poly1d_fn(x), '--k') # 'yo' = yellow circle marker, '--k' = black dashed line
+    plt.xlim(1,3)
+    plt.show()
+
 
     pass # TEMP. Remove when done
 
@@ -52,11 +60,13 @@ monthRemaining = pd.concat([Jan.T[0:1], Feb.T[0:1], Mar.T[0:1]])
 monthRemaining = monthRemaining.rename_axis("Month", axis="columns")
 monthRemaining = monthRemaining.set_axis(['Jan', 'Feb', 'Mar'], axis=0)
 #monthRemaining.insert(0, 'index', [*range(len(monthRemaining))])
-print(monthRemaining)
+print(monthRemaining.info())
 
 # Testing linReg()
 linRegXYData = pd.DataFrame()
-linRegXYData["Month"] = ([1], [2], [3])
-linRegXYData["Waste"] = ([Jan["Food_Waste"]], [Feb["Food_Waste"]], [Mar["Food_Waste"]])
+#linRegXYData["Month"] = ([1], [2], [3])
+linRegXYData["Jan"] = Jan["Food_Waste"]
+linRegXYData["Feb"] = Feb["Food_Waste"]
+linRegXYData["Mar"] = Mar["Food_Waste"]
+print(linRegXYData)
 linReg(linRegXYData)
-print("\n", linRegXYData)
