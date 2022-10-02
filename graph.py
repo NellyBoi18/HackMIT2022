@@ -2,10 +2,9 @@ from main import *
 import matplotlib.pyplot as plt
 
 
-
-product = list(remaining.index)
+product = list(Jan.iloc[:, 0].index)
 print(product)
-quantity = list(remaining.values)
+quantity = list(Jan.iloc[:, 0].values)
 print(quantity)
 
 # Single month food waste
@@ -15,5 +14,7 @@ plt.show()
 
 
 # Multiple month food waste
-df  =
-columns = []
+
+monthRemaining.plot(x='Month', kind='bar', stacked=True,
+        title='Stacked Bar Graph by dataframe')
+plt.show()
